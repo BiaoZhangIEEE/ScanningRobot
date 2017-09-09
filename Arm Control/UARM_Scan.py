@@ -13,7 +13,6 @@ from time import sleep
 from uf.wrapper.swift_api import SwiftAPI
 from uf.utils.log import *
 
-
 SCANNER_X = 230
 SCANNER_Y = 67
 
@@ -35,26 +34,29 @@ sleep(2)
 
 print('moving!')
 
-swift.set_position(150, 0, 250, speed = 10000, wait = True) # Home
+swift.set_position(150, 0, 250, speed = 15000, wait = True) # Home
 
 # Discard
-swift.set_position(SCANNER_X, SCANNER_Y, 250, speed = 10000, wait = True) # Above Scanner 
+swift.set_position(SCANNER_X, SCANNER_Y, 250, speed = 15000, wait = True) # Above Scanner 
 swift.set_pump(True)
-swift.set_position(SCANNER_X, SCANNER_Y, 130, speed = 5000, wait = True) # Scanner 
-swift.set_position(SCANNER_X, SCANNER_Y, 250, speed = 5000, wait = True) # Above Scanner 
+swift.set_position(SCANNER_X, SCANNER_Y, 130, speed = 10000, wait = True) # Scanner 
+swift.set_position(SCANNER_X, SCANNER_Y, 250, speed = 10000, wait = True) # Above Scanner 
 swift.set_position(0, -217, 250, speed = 10000, wait = True) # Above Discard Stack
-swift.set_pump(False)
+swift.set_position(0, -217, 100, speed = 10000, wait = True) # Above Discard Stack
 sleep(0.5)
-swift.set_position(20, -20, 50, speed = 10000, wait = True) # Tuck
-swift.set_position(20, 20, 50, speed = 10000, wait = True) # Tuck
+swift.set_pump(False)
+sleep(1)
+swift.set_position(20, -20, 50, speed = 15000, wait = True) # Tuck
+swift.set_position(20, 20, 50, speed = 15000, wait = True) # Tuck
 
 # Draw
-swift.set_position(0, 217, 250, speed = 10000, wait = True) # Above Draw Stack
+#swift.set_position(0, 217, 250, speed = 15000, wait = True) # Above Draw Stack
 swift.set_pump(True)
 # go down slowly 
-height = 250;
+height = 100;
+swift.set_position(0, 217, height, speed = 15000, wait = True)
 while 1:
-  swift.set_position(0, 217, height, speed = 5000, wait = True)
+  swift.set_position(0, 217, height, speed = 60000, wait = True)
   if not swift.get_limit_switch():
     print('pressed')
     break
@@ -65,13 +67,16 @@ while 1:
       print('What?!?! No photo!')
       break
 
-swift.set_position(0, 217, height+50, speed = 5000, wait = True) # Above Draw Stack
-swift.set_position(0, 217, 250, speed = 5000, wait = True) # Above Draw Stack
-swift.set_position(SCANNER_X, SCANNER_Y, 250, speed = 5000, wait = True) # Above Scanner 
+swift.set_position(0, 217, height+50, speed = 10000, wait = True) # Above Draw Stack
+swift.set_position(0, 217, 250, speed = 10000, wait = True) # Above Draw Stack
+swift.set_position(0, 100, 250, speed = 10000, wait = True) # Tuck
+swift.set_position(50, SCANNER_Y, 250, speed = 10000, wait = True) # Tuck
+swift.set_position(SCANNER_X, SCANNER_Y, 250, speed = 10000, wait = True) # Above Scanner 
 swift.set_position(SCANNER_X, SCANNER_Y, 150, speed = 10000, wait = True) # Scanner 
 sleep(0.5)
 swift.set_pump(False);
-swift.set_position(SCANNER_X, SCANNER_Y, 250, speed = 5000, wait = True) # Above Scanner 
-swift.set_position(150, 0, 250, speed = 5000, wait = True) # Home
+sleep(1.5)
+swift.set_position(SCANNER_X, SCANNER_Y, 250, speed = 15000, wait = True) # Above Scanner 
+swift.set_position(150, 0, 250, speed = 15000, wait = True) # Home
 
 print('done ...')
