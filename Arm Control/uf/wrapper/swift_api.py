@@ -578,9 +578,9 @@ class SwiftAPI():
             boolean True or False
         '''
         ret = self._ports['service']['handle'].call('set cmd_sync P2233')
-        if ret == 'OK V0':
+        if ret == 'ok V0':
             return False
-        if ret == 'OK V1':
+        if ret == 'ok V1':
             return True
         self._logger.error('get_limit_switch ret: %s' % ret)
         return None
