@@ -14,7 +14,7 @@ from uf.wrapper.swift_api import SwiftAPI
 from uf.utils.log import *
 
 SCANNER_X = 230
-SCANNER_Y = 67
+SCANNER_Y = 55
 
 
 
@@ -67,7 +67,7 @@ while 1:
       print('What?!?! No photo!')
       break
 
-swift.set_position(0, 217, height+50, speed = 10000, wait = True) # Above Draw Stack
+swift.set_position(0, 217, height+50, speed = 2000, wait = True) # Above Draw Stack
 swift.set_position(0, 217, 250, speed = 10000, wait = True) # Above Draw Stack
 swift.set_position(0, 100, 250, speed = 10000, wait = True) # Tuck
 swift.set_position(50, SCANNER_Y, 250, speed = 10000, wait = True) # Tuck
