@@ -13,6 +13,13 @@ from time import sleep
 from uf.wrapper.swift_api import SwiftAPI
 from uf.utils.log import *
 
+
+SCANNER_X = 230
+SCANNER_Y = 67
+
+
+
+
 #logger_init(logging.VERBOSE)
 #logger_init(logging.DEBUG)
 logger_init(logging.INFO)
@@ -31,10 +38,10 @@ print('moving!')
 swift.set_position(150, 0, 250, speed = 10000, wait = True) # Home
 
 # Discard
-swift.set_position(250, 0, 250, speed = 10000, wait = True) # Above Scanner 
+swift.set_position(SCANNER_X, SCANNER_Y, 250, speed = 10000, wait = True) # Above Scanner 
 swift.set_pump(True)
-swift.set_position(250, 0, 130, speed = 5000, wait = True) # Scanner 
-swift.set_position(250, 0, 250, speed = 5000, wait = True) # Above Scanner 
+swift.set_position(SCANNER_X, SCANNER_Y, 130, speed = 5000, wait = True) # Scanner 
+swift.set_position(SCANNER_X, SCANNER_Y, 250, speed = 5000, wait = True) # Above Scanner 
 swift.set_position(0, -217, 250, speed = 10000, wait = True) # Above Discard Stack
 swift.set_pump(False)
 sleep(0.5)
@@ -60,10 +67,11 @@ while 1:
 
 swift.set_position(0, 217, height+50, speed = 5000, wait = True) # Above Draw Stack
 swift.set_position(0, 217, 250, speed = 5000, wait = True) # Above Draw Stack
-swift.set_position(250, 0, 150, speed = 10000, wait = True) # Scanner 
+swift.set_position(SCANNER_X, SCANNER_Y, 250, speed = 5000, wait = True) # Above Scanner 
+swift.set_position(SCANNER_X, SCANNER_Y, 150, speed = 10000, wait = True) # Scanner 
 sleep(0.5)
 swift.set_pump(False);
-swift.set_position(250, 0, 250, speed = 5000, wait = True) # Above Scanner 
+swift.set_position(SCANNER_X, SCANNER_Y, 250, speed = 5000, wait = True) # Above Scanner 
 swift.set_position(150, 0, 250, speed = 5000, wait = True) # Home
 
 print('done ...')
