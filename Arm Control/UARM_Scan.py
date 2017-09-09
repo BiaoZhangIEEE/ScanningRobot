@@ -39,7 +39,8 @@ swift.set_position(150, 0, 250, speed = 15000, wait = True) # Home
 # Discard
 swift.set_position(SCANNER_X, SCANNER_Y, 250, speed = 15000, wait = True) # Above Scanner 
 swift.set_pump(True)
-swift.set_position(SCANNER_X, SCANNER_Y, 130, speed = 10000, wait = True) # Scanner 
+swift.set_position(SCANNER_X, SCANNER_Y, 135, speed = 10000, wait = True) # Scanner 
+sleep(0.5)
 swift.set_position(SCANNER_X, SCANNER_Y, 250, speed = 10000, wait = True) # Above Scanner 
 swift.set_position(0, -217, 250, speed = 10000, wait = True) # Above Discard Stack
 swift.set_position(0, -217, 100, speed = 10000, wait = True) # Above Discard Stack
@@ -51,7 +52,6 @@ swift.set_position(20, 20, 50, speed = 15000, wait = True) # Tuck
 
 # Draw
 #swift.set_position(0, 217, 250, speed = 15000, wait = True) # Above Draw Stack
-swift.set_pump(True)
 # go down slowly 
 height = 100;
 swift.set_position(0, 217, height, speed = 15000, wait = True)
@@ -67,7 +67,21 @@ while 1:
       print('What?!?! No photo!')
       break
 
-swift.set_position(0, 217, height+50, speed = 2000, wait = True) # Above Draw Stack
+swift.set_position(0, 217, height+20, speed = 5000, wait = True)
+sleep(0.5)
+swift.set_pump(True)
+sleep(0.5)
+swift.set_position(0, 217, height+14, speed = 5000, wait = True)
+sleep(0.5)
+swift.set_position(0, 217, height+40, speed = 2000, wait = True) # Above Draw Stack
+sleep(0.5)
+
+for x in range(4):
+  swift.set_position(0, 217+10, height+40, speed = 60000)
+  sleep(0.2);
+  swift.set_position(0, 217-10, height+40, speed = 60000)
+  sleep(0.2);
+sleep(0.5)
 swift.set_position(0, 217, 250, speed = 10000, wait = True) # Above Draw Stack
 swift.set_position(0, 100, 250, speed = 10000, wait = True) # Tuck
 swift.set_position(50, SCANNER_Y, 250, speed = 10000, wait = True) # Tuck
