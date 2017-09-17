@@ -31,6 +31,8 @@ class Pump():
             self.ports['cmd_sync']['handle'].call('M2231 V0')
         
         # TODO: modify the default timeout time with a service command
+        if(timeout == 0):
+          return 'ok'
         ret = None
         for _ in range(timeout*2):
             ret = self.ports['cmd_sync']['handle'].call('P2231')
